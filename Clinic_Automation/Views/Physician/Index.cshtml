@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Clinic_Automation.Models.Schedule>
+
+
+<div class="d-flex justify-content-start w-100">
+    <a href="@Url.Action("PhysicianDrugRequest", "Physician")" class="btn btn-outline-dark text-decoration-none mt-3"> Request Drug</a>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ScheduleDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Appointment.Patient.PatientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Appointment.Reason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Appointment.Criticality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Appointment.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhysicianPrescriptions)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduleDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Appointment.Patient.PatientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Appointment.Reason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Appointment.Criticality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Appointment.Note)
+            </td>
+            <td>
+                @if (item.PhysicianAdvices.Count == 0)
+                {
+                    <a href="@Url.Action("DisplayPhysicianPrescription","Physician" ,new { @id = item.ScheduleID })" class="btn btn-secondary">Create</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("DisplayPhysicianPrescription","Physician" ,new { @id = item.ScheduleID })" class="btn btn-outline-primary">View</a>
+                }
+
+                @*@Html.ActionLink("View", "DisplayPhysicianPrescription", new { @class = "btn btn-outline-primary", id = item.ScheduleID })*@
+            </td>
+        </tr>
+    }
+
+</table>

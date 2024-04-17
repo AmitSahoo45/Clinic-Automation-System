@@ -1,0 +1,61 @@
+﻿@model Clinic_Automation.Models.Physician
+
+<div>
+    <h4>Physician Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PhysicianName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhysicianName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhysicianAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhysicianAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhysicianNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhysicianNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhysicianEmailID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhysicianEmailID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Specialization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Specialization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhysicianSummary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhysicianSummary)
+        </dd>
+
+    </dl>
+</div>
+
+@Html.ActionLink("Edit", "EditAdminPhysician", new { id = Model.PhysicianID }, new { @class = "btn btn-outline-primary" })
+<a href="@Url.Action("DisplayAdminPhysician", "Admin")" class="btn btn-outline-dark text-decoration-none ">← Back to List</a>
+
+

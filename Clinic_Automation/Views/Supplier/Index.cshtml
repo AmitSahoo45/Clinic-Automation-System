@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Clinic_Automation.Models.PurchaseOrderHeader>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseOrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Supplier.SupplierName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseOrderStatus)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseOrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier.SupplierName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseOrderStatus)
+            </td>
+            <td>
+                @*@Html.ActionLink("Details", "DisplayProductLine", new { id = item.PurchaseOrderID })*@
+                <a href="@Url.Action("DisplayProductLine", "Supplier",new { id = item.PurchaseOrderID })" class="btn btn-primary mb-3 " style="margin-right: 1rem">Details</a>
+            </td>
+
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Clinic_Automation.Models.PhysicianPrescription>
+
+@{
+    ViewBag.Title = ViewBag.ScheduleID;
+}
+
+@*<p>
+        @Html.ActionLink("Create New", "CreatePhysicianPrescription", new { id = ViewBag.ScheduleID }, null)
+    </p>*@
+
+<p>
+    @if (!string.IsNullOrEmpty(ViewBag.AdviceData?.Advise))
+    {
+        <div>@ViewBag.AdviceData.Advise</div>
+
+        <a href="@Url.Action("EditPhysicianAdvice", "Physician", new { id = ViewBag.AdviceData.PhysicianAdviceID })" class="btn btn-warning mb-3 mt-3" style="margin-right: 1rem">Edit Advise</a>
+    }
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Drug.Title)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.PhysicianAdvice.Advise)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Drug.Title)
+            </td>
+            @*<td>
+                    <a href="@Url.Action("DeletePhysicianPrescription","Physician",routeValues: new { id = item.DrugID })" class="btn btn-danger">Delete</a>
+                </td>*@
+            <td>
+        </tr>
+    }
+
+</table>
+@*<p><a href="@Url.Action("Index", "Physician") class="btn btn-dark mb-3 mt-3" style="margin-right: 1rem">Back to List</a></p>*@
+<div class="d-flex justify-content-start w-100">
+    <a href="@Url.Action("Index", "Physician")" class="btn btn-outline-dark text-decoration-none mt-3">← Back to List</a>
+</div>
+

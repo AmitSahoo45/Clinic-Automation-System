@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Clinic_Automation.Models.PhysicianPrescription>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center mb-4">
+            <h2>⚕️<b>Physician Prescription</b></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title"><b>Physician Advice</b> 🩺</h5>
+                    <hr />
+                    @{
+                        var uniqueAdvices = Model.Select(p => p.PhysicianAdvice.Advise).Distinct().ToList();
+                    }
+                    @foreach (var advice in uniqueAdvices)
+                    {
+                        <div>
+                            @advice
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Drug.Title)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12 text-center">
+            <a href="@Url.Action("Index","Patient")" class="btn btn-outline-primary">Back</a>
+        </div>
+    </div>
+</div>
